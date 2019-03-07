@@ -1,0 +1,18 @@
+{
+  "name": "nodeforcache",
+  "version": "0.0.1",
+  "description": "A node.js cache module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/centercao/node-cache.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "readmeFilename": "README.md",
+  "dependencies": {
+  }
+}
