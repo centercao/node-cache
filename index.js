@@ -87,8 +87,7 @@ var createCache = function (alg_name, maxsize) {
         set: set,
         get: get,
         clear: clear,
-        print: print,
-        reset:reset
+        print: print
     }
     setInterval(function () {
         var cache = obj.cache;
