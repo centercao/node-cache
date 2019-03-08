@@ -18,12 +18,16 @@ var set = function (key, value, expire) {
     var _queue = this.queue;
     // 如果已经存在该值，则重新赋值
     if (_cache[key]) {
-        // 重新赋值
-        _cache[key].value = value;
+        // 重新赋值或重设过期时间
+		value?(_cache[key].value = value):'';
         _cache[key].expire = expire;
+		_cache[key].insertTime= +new Date(),
         _queue.update(_cache[key].node);
     // 如果为新插入
     } else {
+		if(!key || !value){
+			return ;
+		}
         // 更新索引
         var returnNode = _queue.insert(key);
         _cache[key] = {
@@ -36,17 +40,6 @@ var set = function (key, value, expire) {
             _cache[k] = null;
         });
     }
-}
-// 重新设置过期时间
-var reset = function (key, expire) {
-    if (this.cache[key]) {
-        // 重新赋值
-        this.cache[key].expire = expire;
-        this.cache[key].insertTime = +new Date();
-        this.queue.update(this.cache[key].node);
-		return true;
-    }
-	return false;
 }
 
 var get = function (key) {
