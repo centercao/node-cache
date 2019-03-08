@@ -72,7 +72,15 @@ var clear = function () {
     this.cache = {};
     this.queue = generateQueue(lastMaxsize, lastAlgo);
 }
-
+var del = function(key){
+    var _cache = this.cache;
+    var _queue = this.queue;
+    if(key && _cache[key]){
+        var node = _cache[key].node;
+       _queue.del(node);
+       _cache[key] = null;
+    }
+}
 var print = function () {
     var queue = this.queue;
     return queue.print();
@@ -87,7 +95,8 @@ var createCache = function (alg_name, maxsize) {
         set: set,
         get: get,
         clear: clear,
-        print: print
+        print: print,
+        del : del
     }
     setInterval(function () {
         var cache = obj.cache;
